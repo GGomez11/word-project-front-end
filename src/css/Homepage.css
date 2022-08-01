@@ -1,0 +1,9 @@
+.formBox {
+  color: black;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* background-color: #f4f4fc; */
+  background-color: #E6E6E6;
+  padding: 30px 50px 50px 50px;
+}

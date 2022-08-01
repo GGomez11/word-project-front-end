@@ -1,0 +1,13 @@
+.nav-style {
+  width: 100%;
+  background-color: #34495c; 
+  /* background-color: #BFBFBF; */
+  height: 75px;
+  margin-bottom: 110px;
+  position: relative;
+}
+.home-style{
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}

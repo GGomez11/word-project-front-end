@@ -1,0 +1,11 @@
+.text-input {
+  width: 75%;
+  padding: 2px;
+  margin: 10px 0;
+  border: 5px;
+  border-radius: 3px;
+}
+.form-style {
+  font-size: 23px;
+  margin-bottom: 50px;
+}

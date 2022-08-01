@@ -1,0 +1,13 @@
+.footer {
+  background-color: #34495C;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 150px;
+} 
+@media (max-width: 500px) {
+  .footer{
+      height: 75px;    
+  }    
+}
