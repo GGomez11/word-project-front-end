@@ -1,26 +1,33 @@
+@font-face {
+  font-family: Roboto;
+  src: url('./fonts/RobotoRegular.ttf');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Roboto;
 }
 
-html, body {
+html,
+body {
   line-height: 1.4;
-  font-family: Roboto;
   height: 100%;
   background-color: #D8D8D8;
-  text-align: center; 
-} 
+  text-align: center;
+}
 
-.App, #root{
+.App,
+#root {
   height: 100%;
   position: relative;
 }
+
 /* #root{
   height: 100%;
 } */
 a {
   color: black;
   text-decoration: none;
-} 
-
+}
