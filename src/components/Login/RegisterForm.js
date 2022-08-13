@@ -44,11 +44,12 @@ function RegisterForm() {
                     username: email,
                     password: password
                 }
+            }).then(res => {
+                setFormError(formError => ({ ...formError, isError: !res.data.status, message: res.data.message }))
             })
-            setFormError(formError => ({ ...formError, isError: false, message: '' }))
         }
 
-        console.log(formError)
+
         e.preventDefault()
     }
 
