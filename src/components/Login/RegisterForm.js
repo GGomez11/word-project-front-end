@@ -40,8 +40,8 @@ function RegisterForm() {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                data: {
-                    email: email,
+                auth: {
+                    username: email,
                     password: password
                 }
             })
