@@ -45,7 +45,7 @@ function RegisterForm() {
                     password: password
                 }
             }).then(res => {
-                setFormError(formError => ({ ...formError, isError: !res.data.status, message: res.data.message }))
+                setFormError(formError => ({ ...formError, isError: !res.data.createdUser, message: res.data.message }))
             })
         }
 

@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import '../../css/GetStartedModal.css'
 import Button from '@material-ui/core/Button';
 import { useState } from 'react'
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,18 +19,31 @@ function SignInForm() {
     const classes = useStyles();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [formError, setFormError] = useState({ isAuthenticated: false, message: '' })
 
     const handleSubmit = (e) => {
+        axios.request({
+            method: 'post',
+            url: 'http://localhost:5000/login/authenticate',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            auth: {
+                username: email,
+                password: password
+            }
+        }).then(res => {
+            setFormError(formError => ({ ...formError, isAuthenticated: !res.data.isAuthenticated, message: res.data.message }))
+        })
         e.preventDefault()
-        console.log('fdsafd')
-        console.log({ 'email': email, 'password': password })
     }
 
     return (
         <div className="form-container">
             <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit} >
-                <TextField id="email" label="Email" fullWidth onChange={(e) => { setEmail(e.target.value) }} />
-                <TextField id="password" label="Password" type="password" fullWidth onChange={(e) => { setPassword(e.target.value) }} />
+                <TextField id="email" label="Email" fullWidth onChange={(e) => { setEmail(e.target.value) }} required />
+                <TextField id="password" label="Password" type="password" error={formError.isAuthenticated} fullWidth onChange={(e) => { setPassword(e.target.value) }} required helperText={formError.message} />
                 <Button type='submit' variant="outlined" color="primary">
                     Sign In
                 </Button>
