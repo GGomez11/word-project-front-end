@@ -34,7 +34,12 @@ function SignInForm() {
                 password: password
             }
         }).then(res => {
-            setFormError(formError => ({ ...formError, isAuthenticated: !res.data.isAuthenticated, message: res.data.message }))
+            const isError = !res.data.isAuthenticated
+            setFormError(formError => ({ ...formError, isAuthenticated: isError, message: res.data.message }))
+            if (!isError) {
+                // Load token into local memory
+                localStorage.setItem('jwt', res.data.accessToken)
+            }
         })
         e.preventDefault()
     }
