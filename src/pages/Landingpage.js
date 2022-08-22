@@ -1,19 +1,42 @@
 import '../css/Landingpage.css';
 import Book from '../images/book.png'
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '@material-ui/core/Modal';
 import GetStartedModal from '../components/GetStartedModal';
 import { Dialog } from '@material-ui/core';
+import { verifyToken } from '../services/authenticate'
 
 const LandingPage = () => {
+    useEffect(() => {
+        async function checkToken() {
+            const token = localStorage.getItem('jwt')
+            if(token){
+                const isValid = await verifyToken(token)
+                if(isValid){
+                    console.log('You have a valid token!')
+                    // Set state that renders homepage when get started page is clicked
+                } else {
+                    console.log(`You don't have a valid token!`)
+                }
+            } else {
+                console.log(`You don't have a token`)
+                // state stays false
+            }
+        }
+        checkToken()
+    },[])
+    
+    
+    const [open, setOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    
+    console.log(isLoggedIn)
     let navigate = useNavigate();
     const routeChange = () => {
         let path = `home`;
         navigate(path);
     }
-
-    const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
         setOpen(true)
@@ -34,6 +57,7 @@ const LandingPage = () => {
                     <button className='title-button' type="button" onClick={handleOpen}>Get Started</button>
                 </div>
                 <div>
+                    {!isLoggedIn &&
                     <Dialog
                         className='modal-container'
                         open={open}
@@ -41,8 +65,11 @@ const LandingPage = () => {
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
                     >
-                        <GetStartedModal />
+                        <GetStartedModal setIsLoggedIn={setIsLoggedIn}/>
                     </Dialog>
+                    }
+                    {isLoggedIn && routeChange()
+                    }
                 </div>
             </div>
             <div className='image-container'>
