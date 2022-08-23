@@ -13,6 +13,7 @@ const LandingPage = () => {
             const token = localStorage.getItem('jwt')
             if(token){
                 const isValid = await verifyToken(token)
+                
                 if(isValid){
                     console.log('You have a valid token!')
                     // Set state that renders homepage when get started page is clicked
@@ -31,7 +32,7 @@ const LandingPage = () => {
     const [open, setOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     
-    console.log(isLoggedIn)
+    //console.log(isLoggedIn)
     let navigate = useNavigate();
     const routeChange = () => {
         let path = `home`;

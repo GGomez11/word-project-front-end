@@ -1,13 +1,15 @@
 import axios from 'axios'
 
-export function verifyToken(token) {
-    axios.request({
+export async function verifyToken(token) {
+    // Base 64 token
+    const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
+    await axios.request({
         method: 'post',
         url: 'http://localhost:5000/login/verify',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': encodedString
         },
     }).then(res => {
         const isAuthenticated = res.data.isValid
