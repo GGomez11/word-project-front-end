@@ -4,6 +4,7 @@ import '../../css/GetStartedModal.css'
 import Button from '@material-ui/core/Button';
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,16 +16,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignInForm() {
+function SignInForm({setIsLoggedIn}) {
     const classes = useStyles();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [formError, setFormError] = useState({ isAuthenticated: false, message: '' })
+    let navigate = useNavigate()
 
     const handleSubmit = (e) => {
         axios.request({
             method: 'post',
-            url: 'http://localhost:5000/login/authenticate',
+            url: 'http://localhost:5000/login/login',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -39,6 +41,8 @@ function SignInForm() {
             if (!isError) {
                 // Load token into local memory
                 localStorage.setItem('jwt', res.data.accessToken)
+                setIsLoggedIn(true)
+                navigate('/home')
             }
         })
         e.preventDefault()

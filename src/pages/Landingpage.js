@@ -7,39 +7,36 @@ import GetStartedModal from '../components/GetStartedModal';
 import { Dialog } from '@material-ui/core';
 import { verifyToken } from '../services/authenticate'
 
-const LandingPage = () => {
-    useEffect(() => {
-        async function checkToken() {
-            const token = localStorage.getItem('jwt')
-            if(token){
-                const isValid = await verifyToken(token)
-                
-                if(isValid){
-                    console.log('You have a valid token!')
-                    // Set state that renders homepage when get started page is clicked
-                } else {
-                    console.log(`You don't have a valid token!`)
-                }
+const LandingPage = () => {    
+    async function checkToken() {
+        const token = localStorage.getItem('jwt')
+        
+        if(token){
+            const isValid = await verifyToken(token)
+        
+            if(isValid){
+                console.log('You have a valid token!')
+                setIsLoggedIn(true)
             } else {
-                console.log(`You don't have a token`)
-                // state stays false
+                console.log(`You don't have a valid token!`)
             }
+        } else {
+            console.log(`You don't have a token`)
         }
-        checkToken()
-    },[])
-    
+    }
     
     const [open, setOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     
-    //console.log(isLoggedIn)
     let navigate = useNavigate();
+
     const routeChange = () => {
         let path = `home`;
         navigate(path);
     }
 
     const handleOpen = () => {
+        checkToken()
         setOpen(true)
     }
 
@@ -58,7 +55,7 @@ const LandingPage = () => {
                     <button className='title-button' type="button" onClick={handleOpen}>Get Started</button>
                 </div>
                 <div>
-                    {!isLoggedIn &&
+                    {(!isLoggedIn) && 
                     <Dialog
                         className='modal-container'
                         open={open}
@@ -69,7 +66,8 @@ const LandingPage = () => {
                         <GetStartedModal setIsLoggedIn={setIsLoggedIn}/>
                     </Dialog>
                     }
-                    {isLoggedIn && routeChange()
+                    {(isLoggedIn && open) && 
+                    routeChange()
                     }
                 </div>
             </div>

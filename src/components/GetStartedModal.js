@@ -35,7 +35,7 @@ function a11yProps(index) {
     };
 }
 
-function GetStartedModal() {
+function GetStartedModal({setIsLoggedIn}) {
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
@@ -54,7 +54,7 @@ function GetStartedModal() {
                 <RegisterForm />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <SignInForm />
+                <SignInForm setIsLoggedIn={setIsLoggedIn}/>
             </TabPanel>
         </div>
     )
