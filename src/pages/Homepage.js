@@ -11,8 +11,18 @@ function Homepage(){
     
     /** Axios call to get words from local database */
     const getWords = () => {
-        axios.get('http://localhost:5000/words')
-        .then(function (response) {
+        const token = localStorage.getItem('jwt')
+        const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
+        
+        axios.request({
+            method: 'GET',
+            url: 'http://localhost:5000/words',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': encodedString
+            },
+        }).then(function (response) {
             console.log(response.data)
             setWords(response.data)
         })

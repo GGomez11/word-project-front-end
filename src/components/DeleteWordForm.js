@@ -5,21 +5,19 @@ import '../css/Form.css'
 function DeleteWordForm(props){
     const [word, setWord] = useState(' ')
 
-    /**
-     * JSON for delete request
-     */
-    let options = {
-        method: 'DELETE',
-        url: 'http://localhost:5000/words/'+word,
-    } 
-
-    /** 
-     * Handles submit event
-     * Make a delete request to my API
-    */
     const handleSubmit = (e) => {
-        axios.request(options)
-            .then(res => {
+        const token = localStorage.getItem('jwt')
+        const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
+        
+        axios.request({
+            method: 'DELETE',
+            url: 'http://localhost:5000/words/'+word,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': encodedString
+            }
+        }).then(res => {
                 props.getWords()
                 e.target.reset()
             })

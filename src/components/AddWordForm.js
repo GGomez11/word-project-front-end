@@ -59,11 +59,18 @@ function AddWordForm(props){
             .then(res => {
                 console.log(res.data)
                 let parsedData = parse(res.data)
+                const token = localStorage.getItem('jwt')
+                const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
+                
                 axios.post('http://localhost:5000/words',{
                     word: word,
                     definitions: parsedData,
                     link: 'https://translate.google.com/?hl=en&sl=auto&tl=es&text='+word+'&op=translate'
-                })
+                }, {headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': encodedString
+                }})
                 .then(res => {
                     e.target.reset()
                     props.getWords()
