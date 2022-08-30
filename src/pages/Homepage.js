@@ -65,7 +65,7 @@ function Homepage(){
             setIsLoggedIn(false);
             setOpen(true);
         }
-    },[])
+    },[isLoggedIn])
     
     return(
         <div>
@@ -77,7 +77,7 @@ function Homepage(){
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
                 >
-            <GetStartedModal/>
+            <GetStartedModal setIsLoggedIn={setIsLoggedIn}/>
             </Dialog>
             }
             <Header setIsLoggedIn={setIsLoggedIn} />
