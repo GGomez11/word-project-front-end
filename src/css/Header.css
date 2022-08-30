@@ -6,8 +6,13 @@
   margin-bottom: 110px;
   position: relative;
 }
-.home-style{
+.home-style {
   position: absolute;
   left: 20px;
   top: 25px;
+}
+.logout-style {
+  position: absolute !important;
+  right: 20px;
+  top: 22px;
 }
