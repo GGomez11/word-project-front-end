@@ -22,5 +22,9 @@ export function validateEmail(email){
 }
 
 export function validatePassword(password){
-    return true
+    if(password.length < 6) {
+        return false
+    } else {
+        return true
+    }
 }

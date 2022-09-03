@@ -54,8 +54,8 @@ function RegisterForm() {
                     }
                 }).then(res => {
                     let didCreate = !res.data.createdUser
-                    setFormError(formError => ({passwordError: didCreate, passWordMessage: res.data.message,
-                                                emaillError: didCreate, emailMessage: res.data.message }))
+                    setFormError(formError => ({passwordError: didCreate, passwordMessage: res.data.message,
+                                                emailError: didCreate, emailMessage: res.data.message }))
                 })
             }
         }
