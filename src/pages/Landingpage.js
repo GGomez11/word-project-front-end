@@ -55,6 +55,9 @@ const LandingPage = () => {
                     <button className='title-button' type="button" onClick={handleOpen}>Get Started</button>
                 </div>
                 <div>
+                    {(isLoggedIn && open) && 
+                        routeChange()
+                    }
                     {(!isLoggedIn) && 
                     <Dialog
                         className='modal-container'
@@ -65,9 +68,6 @@ const LandingPage = () => {
                     >
                         <GetStartedModal setIsLoggedIn={setIsLoggedIn}/>
                     </Dialog>
-                    }
-                    {(isLoggedIn && open) && 
-                    routeChange()
                     }
                 </div>
             </div>

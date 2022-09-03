@@ -4,6 +4,7 @@ import '../../css/GetStartedModal.css'
 import Button from '@material-ui/core/Button';
 import { useState } from 'react'
 import axios from 'axios'
+import { validateEmail, validatePassword } from '../../services/validateInput'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,7 +25,7 @@ function RegisterForm() {
 
     const passwordsMatch = () => {
         if (password !== confirmPassword) {
-            setFormError(formError => ({ ...formError, isError: true, message: 'Password don\'t match' }))
+            setFormError(formError => ({passwordError: true, passwordMessage: 'Password don\'t match' }))
             return false
         } else {
             return true
@@ -32,33 +33,40 @@ function RegisterForm() {
     }
 
     const handleSubmit = (e) => {
-        if (passwordsMatch(password, confirmPassword)) {
-            axios.request({
-                method: 'post',
-                url: 'http://localhost:5000/login/register',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                auth: {
-                    username: email,
-                    password: password
-                }
-            }).then(res => {
-                setFormError(formError => ({ ...formError, isError: !res.data.createdUser, message: res.data.message }))
-            })
-        }
-
-
         e.preventDefault()
+        if(!validateEmail(email)) {
+            setFormError({ isAuthenticated: false, emailError: true, emailMessage: 'Invalid email'})
+        }
+        else if(!validatePassword(password)) {
+            setFormError({ isAuthenticated: false, passwordError: true, passwordMessage: 'Invalid password'})
+        } else {
+            if (passwordsMatch(password, confirmPassword)) {
+                axios.request({
+                    method: 'post',
+                    url: 'http://localhost:5000/login/register',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    auth: {
+                        username: email,
+                        password: password
+                    }
+                }).then(res => {
+                    let didCreate = !res.data.createdUser
+                    setFormError(formError => ({passwordError: didCreate, passwordMessage: res.data.message,
+                                                emailError: didCreate, emailMessage: res.data.message }))
+                })
+            }
+        }
     }
 
     return (
         <div className="form-container">
             <form className={classes.root} autoComplete="off" onSubmit={handleSubmit} >
-                <TextField id="email" label="Email" fullWidth onChange={(e) => { setEmail(e.target.value) }} required />
-                <TextField id="password" label="Password" type="password" error={formError.isError} fullWidth onChange={(e) => { setPassword(e.target.value) }} required helperText={formError.message} />
-                <TextField id="confirmPassword" label="Confirm Password" type="password" error={formError.isError} fullWidth onChange={(e) => { setConfirmPassword(e.target.value) }} required />
+                <TextField id="email" label="Email" fullWidth onChange={(e) => { setEmail(e.target.value) }} error={formError.emailError} helperText={formError.emailMessage} required />
+                <TextField id="password" label="Password" type="password" fullWidth error={formError.passwordError} onChange={(e) => { setPassword(e.target.value) }} required  />
+                <TextField id="confirmPassword" label="Confirm Password" type="password" fullWidth error={formError.passwordError} onChange={(e) => { setConfirmPassword(e.target.value) }} helperText={formError.passwordMessage} required />
                 <Button type='submit' variant="outlined" color="primary">
                     Sign Up
                 </Button>
