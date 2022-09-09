@@ -30,7 +30,7 @@ const WordTable = (props) =>{
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.words.map((row) => (
+                    {props.words?.map((row) => (
                     <TableRow style={{MuiTableCellRoot: '30px'}} key={row._id}>
                         <TableCell>{row.word}</TableCell>
                         <TableCell><ol>{row.definitions.map((def,i) => (
