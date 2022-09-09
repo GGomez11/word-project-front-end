@@ -19,6 +19,7 @@ function Homepage(){
         if(token === null) {
             return false;
         } else {
+            console.log(token)
             return true
         }
     }
@@ -60,6 +61,7 @@ function Homepage(){
     
     useEffect(() => {
         if (checkToken()) {
+            
             getWords()
         } else {
             setIsLoggedIn(false);
