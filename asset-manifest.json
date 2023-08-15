@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/word-project-front-end/static/css/main.d41aef0e.chunk.css",
-    "main.js": "/word-project-front-end/static/js/main.d4afa44a.chunk.js",
-    "main.js.map": "/word-project-front-end/static/js/main.d4afa44a.chunk.js.map",
+    "main.js": "/word-project-front-end/static/js/main.bf3dfcfd.chunk.js",
+    "main.js.map": "/word-project-front-end/static/js/main.bf3dfcfd.chunk.js.map",
     "runtime-main.js": "/word-project-front-end/static/js/runtime-main.a1b365d0.js",
     "runtime-main.js.map": "/word-project-front-end/static/js/runtime-main.a1b365d0.js.map",
     "static/js/2.9a96c1e3.chunk.js": "/word-project-front-end/static/js/2.9a96c1e3.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a1b365d0.js",
     "static/js/2.9a96c1e3.chunk.js",
     "static/css/main.d41aef0e.chunk.css",
-    "static/js/main.d4afa44a.chunk.js"
+    "static/js/main.bf3dfcfd.chunk.js"
   ]
 }
