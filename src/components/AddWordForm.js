@@ -19,7 +19,7 @@ function AddWordForm(props){
         const token = localStorage.getItem('jwt')
         const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
 
-        axios.post('http://localhost:5000/words',{
+        axios.post('http://localhost:5000/words/word',{
             word: word
         },{headers: {
             'Accept': 'application/json',
