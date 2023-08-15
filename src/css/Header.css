@@ -16,3 +16,10 @@
   right: 20px;
   top: 22px;
 }
+
+.darkmode-style{
+  position: absolute !important;
+  right: 70px;
+  top: 22px;
+  margin-right: 20px;
+}
