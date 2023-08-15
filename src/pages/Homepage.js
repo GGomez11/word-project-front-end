@@ -10,7 +10,7 @@ import { Dialog } from '@material-ui/core';
 
 function Homepage(){
     const [words, setWords] = useState([])
-    const [isLoggedIn, setIsLoggedIn] = useState()
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
     const [open, setOpen] = useState(false)
 
     const checkToken = () => {
@@ -19,7 +19,6 @@ function Homepage(){
         if(token === null) {
             return false;
         } else {
-            console.log(token)
             return true
         }
     }
@@ -43,8 +42,6 @@ function Homepage(){
             },
         }).then(function (response) {
             if (!response.data.isValid) {
-                console.log(response.data.isValid)
-                console.log('not valid response')
                 setIsLoggedIn(false)
                 setOpen(true)
             } else {
@@ -60,8 +57,7 @@ function Homepage(){
     } 
     
     useEffect(() => {
-        if (checkToken()) {
-            
+        if (checkToken()) {   
             getWords()
         } else {
             setIsLoggedIn(false);
