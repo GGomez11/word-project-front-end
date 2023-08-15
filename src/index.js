@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import HomePage from './pages/Homepage'
 import {
-  BrowserRouter,
-  Routes,
-  Route
+  HashRouter,
+  Route,
+  Routes
 } from "react-router-dom";
 
+
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<App />}/>
       <Route path="/home" element={<HomePage />}/>
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );
