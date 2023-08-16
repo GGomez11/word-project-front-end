@@ -32,7 +32,6 @@ function Homepage(){
         const token = localStorage.getItem('jwt')
         const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
         const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/words' : 'http://localhost:5000/words'
-        console.log(process.env)
         axios.request({
             method: 'GET',
             url: apiURL,
@@ -46,7 +45,6 @@ function Homepage(){
                 setIsLoggedIn(false)
                 setOpen(true)
             } else {
-                console.log('valid response')
                 setIsLoggedIn(true)
                 setWords(response.data.words)
                 console.log(response.data)

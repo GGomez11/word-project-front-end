@@ -15,13 +15,8 @@ const LandingPage = () => {
             const isValid = await verifyToken(token)
         
             if(isValid){
-                console.log('You have a valid token!')
                 setIsLoggedIn(true)
-            } else {
-                console.log(`You don't have a valid token!`)
             }
-        } else {
-            console.log(`You don't have a token`)
         }
     }
     
