@@ -32,9 +32,10 @@ function SignInForm({setIsLoggedIn}) {
         else if(!validatePassword(password)) {
             setFormError({isAuthenticated: false, passwordError: true, passwordMessage: 'Invalid password'})    
         } else {
+            const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/login/login' : 'http://localhost:5000/login/login'
             axios.request({
                 method: 'post',
-                url: 'http://localhost:5000/login/login',
+                url: apiURL,
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

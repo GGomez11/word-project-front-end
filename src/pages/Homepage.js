@@ -31,10 +31,11 @@ function Homepage(){
     const getWords = () => {
         const token = localStorage.getItem('jwt')
         const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
-        
+        const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/words' : 'http://localhost:5000/words'
+        console.log(process.env)
         axios.request({
             method: 'GET',
-            url: 'http://localhost:5000/words',
+            url: apiURL,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

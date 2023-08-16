@@ -18,8 +18,10 @@ function AddWordForm(props){
     const handleSubmit = (e) => {
         const token = localStorage.getItem('jwt')
         const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
+        const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/words/word' : 'http://localhost:5000/words/word'
 
-        axios.post('http://localhost:5000/words/word',{
+
+        axios.post(apiURL,{
             word: word
         },{headers: {
             'Accept': 'application/json',

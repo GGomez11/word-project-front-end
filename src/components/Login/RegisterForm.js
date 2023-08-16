@@ -41,9 +41,10 @@ function RegisterForm() {
             setFormError({ isAuthenticated: false, passwordError: true, passwordMessage: 'Invalid password'})
         } else {
             if (passwordsMatch(password, confirmPassword)) {
+                const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/login/register' : 'http://localhost:5000/login/register'
                 axios.request({
                     method: 'post',
-                    url: 'http://localhost:5000/login/register',
+                    url: apiURL,
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
