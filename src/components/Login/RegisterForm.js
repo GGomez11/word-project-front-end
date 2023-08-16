@@ -38,12 +38,13 @@ function RegisterForm() {
             setFormError({ isAuthenticated: false, emailError: true, emailMessage: 'Invalid email'})
         }
         else if(!validatePassword(password)) {
-            setFormError({ isAuthenticated: false, passwordError: true, passwordMessage: 'Invalid password'})
+            setFormError({ isAuthenticated: false, passwordError: true, passwordMessage: 'Password must be 6 characters or greater'})
         } else {
             if (passwordsMatch(password, confirmPassword)) {
+                const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/login/register' : 'http://localhost:5000/login/register'
                 axios.request({
                     method: 'post',
-                    url: 'http://localhost:5000/login/register',
+                    url: apiURL,
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',

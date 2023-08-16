@@ -8,10 +8,11 @@ function DeleteWordForm(props){
     const handleSubmit = (e) => {
         const token = localStorage.getItem('jwt')
         const encodedString = Buffer.from(`Bearer ${token}`).toString('base64')
-        
+        const apiURL = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/words/word' : 'http://localhost:5000/words/word'
+
         axios.request({
             method: 'DELETE',
-            url: 'http://localhost:5000/words/'+word,
+            url: apiURL+word,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
