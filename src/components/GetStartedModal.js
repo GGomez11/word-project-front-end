@@ -51,7 +51,7 @@ function GetStartedModal({setIsLoggedIn}) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <RegisterForm />
+                <RegisterForm setIsLoggedIn={setIsLoggedIn}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <SignInForm setIsLoggedIn={setIsLoggedIn}/>
