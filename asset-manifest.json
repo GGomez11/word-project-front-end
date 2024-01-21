@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/word-project-front-end/static/css/main.d41aef0e.chunk.css",
+    "main.css": "/word-project-front-end/static/css/main.23ed5627.chunk.css",
     "main.js": "/word-project-front-end/static/js/main.4a442d4e.chunk.js",
     "main.js.map": "/word-project-front-end/static/js/main.4a442d4e.chunk.js.map",
     "runtime-main.js": "/word-project-front-end/static/js/runtime-main.a1b365d0.js",
@@ -8,7 +8,7 @@
     "static/js/2.89322706.chunk.js": "/word-project-front-end/static/js/2.89322706.chunk.js",
     "static/js/2.89322706.chunk.js.map": "/word-project-front-end/static/js/2.89322706.chunk.js.map",
     "index.html": "/word-project-front-end/index.html",
-    "static/css/main.d41aef0e.chunk.css.map": "/word-project-front-end/static/css/main.d41aef0e.chunk.css.map",
+    "static/css/main.23ed5627.chunk.css.map": "/word-project-front-end/static/css/main.23ed5627.chunk.css.map",
     "static/js/2.89322706.chunk.js.LICENSE.txt": "/word-project-front-end/static/js/2.89322706.chunk.js.LICENSE.txt",
     "static/media/App.css": "/word-project-front-end/static/media/RobotoRegular.03523cf5.ttf",
     "static/media/book.582846e1.png": "/word-project-front-end/static/media/book.582846e1.png"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.a1b365d0.js",
     "static/js/2.89322706.chunk.js",
-    "static/css/main.d41aef0e.chunk.css",
+    "static/css/main.23ed5627.chunk.css",
     "static/js/main.4a442d4e.chunk.js"
   ]
 }
