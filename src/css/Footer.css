@@ -1,13 +1,20 @@
 .footer {
   background-color: #34495C;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
-  right: 0;
-  height: 150px;
+  width: 100%;
+  height: 75px;
 } 
-@media (max-width: 500px) {
+
+@media (min-width: 1535) {
   .footer{
-      height: 75px;    
+      height: 100px;    
+  }    
+}
+
+@media (min-width: 500px) {
+  .footer{
+      height: 80px;    
   }    
 }

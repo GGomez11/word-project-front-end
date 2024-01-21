@@ -1,4 +1,4 @@
-@media (max-width: 800px) {
+@media (min-width: 0px) {
   .title-header {
     text-align: center;
     font-size: 44px;
@@ -78,8 +78,7 @@
   }
 
   .book-css {
-    width: 100%;
-    max-width: 700px;
+    max-width: 500px;
     height: auto;
   }
 }
